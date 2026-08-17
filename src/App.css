@@ -1,0 +1,431 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #eeeeee;
+  color: #111;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: #c9c7c7;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.auth-card {
+  position: relative;
+
+  width: 800px;
+  max-width: 100%;
+  height: 450px;
+
+  background: #bebdbd;
+
+  border-radius: 10px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+
+/* =========================
+   LOGIN PANEL
+========================= */
+
+.form-panel {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 50%;
+  height: 100%;
+
+  padding: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: #111;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.form-panel h1 {
+  margin: 0 0 30px;
+
+  text-align: center;
+
+  color: #111;
+
+  font-size: 32px;
+}
+
+
+/* =========================
+   SIGNUP PANEL
+========================= */
+
+.signup-panel {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 50%;
+  height: 100%;
+
+  padding: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: #111;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.signup-panel h1 {
+  margin: 0 0 25px;
+
+  text-align: center;
+
+  color: #111;
+
+  font-size: 32px;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.input-box {
+  width: 100%;
+
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+
+  padding: 10px 5px;
+
+  border: none;
+  border-bottom: 2px solid #333333;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 16px;
+
+  transition: border-color 0.25s ease;
+}
+
+.input-box input::placeholder {
+  color: #777777;
+  opacity: 1;
+}
+
+.input-box input:focus {
+  border-bottom-color: #000000;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.submit-btn {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 25px;
+
+  background: #373636;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.submit-btn:hover {
+  opacity: 0.82;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================
+   SWITCH TEXT
+========================= */
+
+.switch-text {
+  margin: 20px 0 0;
+
+  text-align: center;
+
+  color: #444444;
+
+  font-size: 13px;
+}
+
+.link-btn {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #000000;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   BLACK WELCOME PANEL
+========================= */
+
+.welcome-panel {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 50%;
+  height: 100%;
+
+  background: #373636;
+  color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+
+  /*
+     Diagonal on left side
+  */
+
+  clip-path: polygon(
+    22% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  transform: translateX(0);
+
+  transition:
+    transform 0.65s ease,
+    clip-path 0.65s ease;
+}
+
+
+/* =========================
+   WELCOME TEXT
+========================= */
+
+.welcome-content {
+  width: 70%;
+
+  margin-left: 50px;
+
+  text-align: center;
+
+  transition: margin 0.65s ease;
+}
+
+.welcome-content h2 {
+  margin: 0 0 15px;
+
+  color: #ffffff;
+
+  font-size: 34px;
+  font-weight: bold;
+
+  line-height: 1.1;
+}
+
+.welcome-content p {
+  margin: 0;
+
+  color: #dddddd;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   SIGNUP MODE
+   Runs when:
+   auth-card signup-mode
+======================================== */
+
+
+/* Hide LOGIN form */
+
+.auth-card.signup-mode .form-panel {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* Show SIGNUP form */
+
+.auth-card.signup-mode .signup-panel {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* Move BLACK panel RIGHT -> LEFT */
+
+.auth-card.signup-mode .welcome-panel {
+  transform: translateX(-100%);
+
+  /*
+     Reverse diagonal
+  */
+
+  clip-path: polygon(
+    0 0,
+    78% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+
+/* Adjust text position when panel is left */
+
+.auth-card.signup-mode .welcome-content {
+  margin-left: 0;
+  margin-right: 50px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 850px) {
+
+  .auth-card {
+    width: 700px;
+  }
+
+  .form-panel,
+  .signup-panel {
+    padding: 45px;
+  }
+
+  .welcome-content h2 {
+    font-size: 30px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .page {
+    padding: 15px;
+  }
+
+  .auth-card {
+    width: 100%;
+    height: 500px;
+  }
+
+  .form-panel,
+  .signup-panel {
+    width: 100%;
+
+    padding: 40px 30px;
+  }
+
+  .welcome-panel {
+    display: none;
+  }
+
+  .form-panel h1,
+  .signup-panel h1 {
+    font-size: 28px;
+  }
+}
